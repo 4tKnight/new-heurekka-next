@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+/*
+ * Heurekka tokens. Same values as the Flutter app (lib/theme/hk_colors.dart).
+ * Dark is the default; light is a complete second theme.
+ */
+:root {
+  --hk-desk: #0b1016;
+  --hk-ground: #0e151c;
+  --hk-card: #16202a;
+  --hk-raised: #1e2b37;
+  --hk-line: #2c3b49;
+  --hk-well: #22303d;
+  --hk-ink: #e8edf2;
+  --hk-inv-fg: #101820;
+  --hk-muted: #93a3b1;
+  --hk-soft: #c9d4de;
+  --hk-lift: #ff8c3f;
+  --hk-warm: #251c13;
+  --hk-livehair: #3a2415;
+  --hk-sparkbg: #2e2717;
+  --hk-gold-ink: #fcc02c;
+  --hk-questbg: #221b0a;
+  --hk-err: #e05a42;
+  --hk-errbg: #2a1612;
+  --hk-err-ink: #f4a898;
+  --hk-ok: #4cc38a;
+  --hk-okbg: #12261c;
+  --hk-ok-ink: #bfebd2;
+  --hk-warnline: #5c4a1a;
+  --hk-warn-ink: #f4e3b0;
+  --hk-ownedbg: #3a3320;
+  --hk-owned-ink: #c9b573;
+  --hk-radio: #4b5d6e;
+  --hk-mark: url(/heurekka-mark-ondark.png);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --hk-desk: #c9d2da;
+  --hk-ground: #f4f6f8;
+  --hk-card: #ffffff;
+  --hk-raised: #e9edf1;
+  --hk-line: #d3dae0;
+  --hk-well: #dde3e8;
+  --hk-ink: #101820;
+  --hk-inv-fg: #ffffff;
+  --hk-muted: #5a6b7b;
+  --hk-soft: #2a3a48;
+  --hk-lift: #c2540a;
+  --hk-warm: #fdebdd;
+  --hk-livehair: #f3c9a8;
+  --hk-sparkbg: #fff3b6;
+  --hk-gold-ink: #865f00;
+  --hk-questbg: #fff8dc;
+  --hk-err: #c2361f;
+  --hk-errbg: #fbe4df;
+  --hk-err-ink: #8e2413;
+  --hk-ok: #1e8e5a;
+  --hk-okbg: #e3f5ea;
+  --hk-ok-ink: #145c3a;
+  --hk-warnline: #e8c766;
+  --hk-warn-ink: #5c4300;
+  --hk-ownedbg: #f3ebcf;
+  --hk-owned-ink: #7a6420;
+  --hk-radio: #94a3af;
+  --hk-mark: url(/heurekka-mark.png);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-desk: var(--hk-desk);
+  --color-ground: var(--hk-ground);
+  --color-card: var(--hk-card);
+  --color-raised: var(--hk-raised);
+  --color-line: var(--hk-line);
+  --color-well: var(--hk-well);
+  --color-ink: var(--hk-ink);
+  --color-inv-fg: var(--hk-inv-fg);
+  --color-muted: var(--hk-muted);
+  --color-soft: var(--hk-soft);
+  --color-lift: var(--hk-lift);
+  --color-warm: var(--hk-warm);
+  --color-livehair: var(--hk-livehair);
+  --color-sparkbg: var(--hk-sparkbg);
+  --color-gold-ink: var(--hk-gold-ink);
+  --color-questbg: var(--hk-questbg);
+  --color-err: var(--hk-err);
+  --color-errbg: var(--hk-errbg);
+  --color-err-ink: var(--hk-err-ink);
+  --color-ok: var(--hk-ok);
+  --color-okbg: var(--hk-okbg);
+  --color-ok-ink: var(--hk-ok-ink);
+  --color-warnline: var(--hk-warnline);
+  --color-warn-ink: var(--hk-warn-ink);
+  --color-ownedbg: var(--hk-ownedbg);
+  --color-owned-ink: var(--hk-owned-ink);
+  --color-radio: var(--hk-radio);
+
+  /* Brand, fixed in every theme. */
+  --color-navy: #283e51;
+  --color-orange: #ee7724;
+  --color-orange-pressed: #d9651a;
+  --color-ember: #c2540a;
+  --color-gold: #fcc02c;
+  --color-success: #1e8e5a;
+  --color-error: #c2361f;
+  --color-presence: #2ecc71;
+
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
+}
+
+html,
+body {
+  background: var(--hk-ground);
+  color: var(--hk-ink);
+}
+
+body {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Focus is a 1.5px orange border, no glow. */
+:focus-visible {
+  outline: 1.5px solid #ee7724;
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Tailwind 4 resets buttons to the default cursor; anything clickable gets the hand. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="switch"],
+select,
+summary,
+label:has(> input[type="checkbox"]),
+label:has(> input[type="radio"]) {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #ee7724 !important;
+}
+
+::placeholder {
+  color: var(--hk-muted);
+}
+
+.mono {
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Tap feedback: scale 0.97 over 120ms. Reduced motion uses opacity. */
+.tap {
+  transition: transform 120ms ease-out, opacity 120ms ease-out, background-color 120ms ease-out, border-color 120ms ease-out;
+}
+.tap:active {
+  transform: scale(0.97);
+}
+
+@keyframes hk-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hk-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+@keyframes hk-skel {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.rise {
+  animation: hk-rise 0.28s ease-out;
+}
+.pulse {
+  animation: hk-pulse 1.6s ease-in-out infinite;
+}
+.skel {
+  animation: hk-skel 1.2s ease-in-out infinite;
+}
+
+/* Button loading dots: brighten in turn. Opacity only, so they also run
+   under reduced motion. */
+@keyframes hk-dot {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  33% {
+    opacity: 1;
+  }
+}
+.hk-dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  animation: hk-dot 0.9s ease-in-out infinite;
+}
+.hk-dots i:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.hk-dots i:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tap:active {
+    transform: none;
+    opacity: 0.7;
+  }
+  .rise {
+    animation: none;
+  }
+  .pulse {
+    animation: none;
+  }
+}
+
+/* Theme background motion, used by the theme editor previews (lib/themekit.ts css()). */
+@keyframes hk-drift {
+  from { background-position: 0% 0%; }
+  to { background-position: 100% 100%; }
+}
+@keyframes hk-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+@keyframes hk-pan {
+  to { background-position: 140px 140px; }
+}
+@keyframes hk-glow {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hk-motion { animation: none !important; }
+}
